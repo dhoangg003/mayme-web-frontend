@@ -16,7 +16,7 @@ import { useDispatch } from "react-redux";
 import { TOKEN_TYPES } from "./constant/constant";
 import AuthApi from "./services/authAPI";
 import { login } from "./redux/Auth/authSlice";
-
+import CheckoutPage from "./pages/checkoutPage/checkoutPage.jsx";
 import Order from "./pages/Order/Order";
 import Menu2 from "./pages/Menu2/Menu2";
 import ListMenu from "./pages/ListMenu/ListMenu.jsx";
@@ -52,10 +52,13 @@ function App() {
 
         <Route path="login" element={<LoginPage />} />
         <Route path="signup" element={<SignupPage />} />
+        <Route path="checkout" element={<CheckoutPage />} />
         <Route
           path="mainpage"
           element={<ProtectedRoute component={MainPage} />}
+
         />
+      
 
         <Route path="listmenu/:id" element={<ListMenu />} />
       </Routes>

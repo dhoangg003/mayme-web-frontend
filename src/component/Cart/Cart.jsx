@@ -2,6 +2,7 @@ import React from "react";
 import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
+import { useNavigate } from "react-router-dom";
 const Cart = ({ cartItems, setShowCart, showCart, setCartItems ,cartItemCount, setCartItemCount }) => {
   const [open, setOpen] = useState(true);
   const closeCart = () => {
@@ -20,6 +21,7 @@ const Cart = ({ cartItems, setShowCart, showCart, setCartItems ,cartItemCount, s
     const newCartItemCount = newCartItems.reduce((total, item) => total + item.quantity, 0);
     setCartItemCount(newCartItemCount);
   };
+  const navigate = useNavigate()
   const checkOut = () => {
     if (cartItems.length !== 0) {
       setCartItems([]);
@@ -28,7 +30,10 @@ const Cart = ({ cartItems, setShowCart, showCart, setCartItems ,cartItemCount, s
     } else {
       return;
     }
-  };
+    
+      navigate("/checkout");
+ 
+  }
 
   const calculateTotal = () => {
     let total = 0;

@@ -8,6 +8,7 @@ import {
   MenuOutlined,
 } from "@ant-design/icons";
 import QRCode from "qrcode";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDishList } from "../../redux/DishList/dishListAction";
 import Cart from "../../component/Cart/Cart";
@@ -23,6 +24,7 @@ const ListMenu = () => {
   const getDishList = useSelector((state) => state.dishList.dishList);
   const tenNhaHang = useSelector((state) => state.auth.currentUser.tenNhaHang);
   const uniqueTypes = [...new Set(getDishList.map((item) => item.loai))];
+  const navigate = useNavigate();
   const [cartItemCount, setCartItemCount] = useState(0);
   useEffect(() => {
     dispatch(fetchDishList());
@@ -61,6 +63,10 @@ const ListMenu = () => {
   };
   const handleMenuClick = (menu) => {
     setCurrentMenu(menu);
+  };
+  const handleBackToMainPage = () => {
+    // Navigate to the ListMenu page
+    navigate('/mainpage');
   };
   const renderMenuItems = () => {
     let menuData = [];
@@ -136,7 +142,7 @@ const ListMenu = () => {
         </div>
         <div className="flex-1 px-2 sm:px-0">
           <div className="flex justify-between items-center">
-            <h3 className="text-3xl font-extralight text-white/50">
+            <h3 className="text-3xl font-extralight text-white/50" onClick={handleBackToMainPage}>
               {tenNhaHang}
             </h3>
             <div className="flex items-center justify-center gap-5">
