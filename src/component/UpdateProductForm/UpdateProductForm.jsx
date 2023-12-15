@@ -90,7 +90,7 @@ const UpdateProductForm = ({
     return formatter.format(number);
   };
   const previewDishImage = (
-    <div className="w-[500px] h-[300px]  relative">
+    <div className="w-[150px] h-[150px]  relative">
       <input
         id="file-upload"
         name="image"
